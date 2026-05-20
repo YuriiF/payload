@@ -2,6 +2,23 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-r
 import { useEffect } from 'react'
 
 export const Route = createRootRoute({
+  head: () => ({
+    links: [
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin: 'anonymous',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono:wght@100..700&display=swap',
+      },
+    ],
+  }),
   component: RootComponent,
 })
 
@@ -28,6 +45,7 @@ function RootComponent() {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <style>{`@layer payload-default, payload;`}</style>
         <HeadContent />
       </head>
       <body>
